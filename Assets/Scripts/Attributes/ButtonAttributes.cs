@@ -5,6 +5,7 @@ namespace Attributes
     [AttributeUsage(AttributeTargets.Method)] // only for methods
     public class ButtonAttribute : Attribute
     {
+        public string Label { get; }
        
         public ButtonAttribute(string label)
         {
@@ -15,7 +16,7 @@ namespace Attributes
         {
             
         }
-        public string Label { get; }
+       
     }
     
 }
