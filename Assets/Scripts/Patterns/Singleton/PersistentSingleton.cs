@@ -8,7 +8,8 @@ namespace Patterns.Singleton
 
         #region Public Accessors
 
-        // Static instance of PersistentGameObjectSingleton which allows it to be accessed by any other script
+        
+        //     Static instance of PersistentGameObjectSingleton which allows it to be accessed by any other script.
         public static T Instance
         {
             get
@@ -23,7 +24,7 @@ namespace Patterns.Singleton
         }
 
         #endregion
-        
+
         private static void CreateInstance()
         {
             var go = new GameObject(typeof(T).ToString());

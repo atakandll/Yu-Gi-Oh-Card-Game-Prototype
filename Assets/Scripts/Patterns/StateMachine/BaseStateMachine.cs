@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Tools.Logger;
+using Logger = Tools.Logger.Logger;
 
 namespace Patterns.StateMachine
 {
@@ -46,7 +48,7 @@ namespace Patterns.StateMachine
             
             var type = state.GetType();
             register.Add(type,state);
-            // logger operation
+            Logger.Instance.Log<BaseStateMachine>(Handler.Name + ", Registered: ", "black", type);
         }
 
         public void Initialize()
@@ -60,7 +62,8 @@ namespace Patterns.StateMachine
             IsInitialized = true;
             
             OnInitialize();
-            // logger operation
+            
+            Logger.Instance.Log<BaseStateMachine>(Handler.Name + ", Initialized! ", "yellow");
                 
             
             
@@ -119,7 +122,7 @@ namespace Patterns.StateMachine
             if (!register.ContainsKey(type))
                 throw new ArgumentException("State " + state + " not registered yet.");
 
-            // logger operation
+            Logger.Instance.Log<BaseStateMachine>(Handler.Name + ", Push state: ", "green", type);
             if (stack.Count > 0 && !isSilent)
                 Current?.OnExitState();
 
@@ -141,7 +144,7 @@ namespace Patterns.StateMachine
                 return;
 
             var state = stack.Pop();
-            // logger operation
+            Logger.Instance.Log<BaseStateMachine>(Handler.Name + ", Pop state: ", "purple", state.GetType());
             state.OnExitState();
 
             if (!isSilent)
