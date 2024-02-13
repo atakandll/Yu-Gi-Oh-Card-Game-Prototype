@@ -1,5 +1,6 @@
 ﻿using System;
 using UICardHand;
+using UnityEngine;
 
 namespace UICardTransform
 {
@@ -8,15 +9,25 @@ namespace UICardTransform
         public UIMotionScaleCard(IUICard handler) : base(handler)
         {
         }
+        protected override void OnMotionEnds()
+        {
+            Handler.Transform.localScale = Target;
+            IsOperating = false;
+            
+
+        }
 
         protected override bool CheckFinalState()
         {
-            throw new NotImplementedException();
+            var delta = Target - Handler.Transform.localScale;
+            return delta.magnitude <= Threshold;
         }
 
         protected override void KeepMotion()
         {
-            throw new NotImplementedException();
+            var current = Handler.Transform.localScale;
+            var amount = Speed * Time.deltaTime;
+            Handler.Transform.localScale = Vector3.Lerp(current, Target, amount);
         }
     }
 }
