@@ -1,10 +1,8 @@
-﻿using System;
-using Data;
+﻿using Data;
 using Extensions;
 using Tools.Input;
 using UICardTransform;
 using UnityEngine;
-using UnityEngine.XR;
 
 namespace UICardHand
 {
