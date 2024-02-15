@@ -8,6 +8,6 @@
         void OnExitState ();
         void OnUpdate ();
         void OnClear ();
-        void OnNextState ();
+        void OnNextState (IState nextState);
     }
 }

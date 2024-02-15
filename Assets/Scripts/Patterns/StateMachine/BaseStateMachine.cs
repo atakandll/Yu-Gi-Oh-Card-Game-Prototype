@@ -6,7 +6,7 @@ using Logger = Tools.Logger.Logger;
 
 namespace Patterns.StateMachine
 {
-    public class BaseStateMachine
+    public abstract class BaseStateMachine
     {
         #region Properties
 
