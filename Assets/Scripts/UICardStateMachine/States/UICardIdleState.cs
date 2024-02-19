@@ -10,7 +10,7 @@ namespace UICardStateMachine.States
     public class UICardIdleState : UIBaseCardState
     {
         private Vector3 DefaultSize { get; }
-        protected UICardIdleState(IUICard handler, UICardParameters parameters, BaseStateMachine fsm) : base(handler, parameters, fsm)
+        public UICardIdleState(IUICard handler, UICardParameters parameters, BaseStateMachine fsm) : base(handler, parameters, fsm)
         {
             DefaultSize = Handler.Transform.localScale;
         }

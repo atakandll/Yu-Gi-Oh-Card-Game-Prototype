@@ -9,7 +9,7 @@ namespace UICardStateMachine.States
     {
         private Vector3 startScale { get; set; }
 
-        protected UICardDiscardState(IUICard handler, UICardParameters parameters, BaseStateMachine fsm) : base(handler, parameters, fsm)
+        public UICardDiscardState(IUICard handler, UICardParameters parameters, BaseStateMachine fsm) : base(handler, parameters, fsm)
         {
         }
         

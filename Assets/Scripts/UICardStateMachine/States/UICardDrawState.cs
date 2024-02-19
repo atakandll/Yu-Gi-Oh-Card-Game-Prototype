@@ -10,7 +10,7 @@ namespace UICardStateMachine.States
     public class UICardDrawState : UIBaseCardState
     {
         private Vector3 startScale { get; set; }
-        protected UICardDrawState(IUICard handler, UICardParameters parameters, BaseStateMachine fsm) : base(handler, parameters, fsm)
+        public UICardDrawState(IUICard handler, UICardParameters parameters, BaseStateMachine fsm) : base(handler, parameters, fsm)
         {
         }
 
@@ -29,7 +29,7 @@ namespace UICardStateMachine.States
 
         private void GoToIdle()
         {
-            Handler.Enable();
+            Handler.Enable();  // PushState<UiCardIdle>();
         }
 
         private void CachePreviousScale()

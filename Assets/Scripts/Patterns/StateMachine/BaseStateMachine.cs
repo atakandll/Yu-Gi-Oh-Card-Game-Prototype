@@ -29,7 +29,7 @@ namespace Patterns.StateMachine
 
         #region Constructors
 
-        protected BaseStateMachine(IStateMachineHandler handler)
+        protected BaseStateMachine(IStateMachineHandler handler = null)
         {
             Handler = handler;
         }

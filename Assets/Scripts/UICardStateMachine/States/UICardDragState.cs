@@ -9,7 +9,7 @@ namespace UICardStateMachine.States
     {
         private Vector3 StartEuler { get; set; }
         private Camera myCamera { get; set; }
-        protected UICardDragState(IUICard handler, Camera camera,UICardParameters parameters, BaseStateMachine fsm) : base(handler, parameters, fsm)
+        public UICardDragState(IUICard handler, Camera camera,UICardParameters parameters, BaseStateMachine fsm) : base(handler, parameters, fsm)
         {
             myCamera = camera;
         }

@@ -17,7 +17,7 @@ namespace UICardStateMachine.States
         private Vector3 StartEuler { get; set; }
 
         #endregion
-        protected UICardHoverState(IUICard handler, UICardParameters parameters, BaseStateMachine fsm) : base(handler, parameters, fsm)
+        public UICardHoverState(IUICard handler, UICardParameters parameters, BaseStateMachine fsm) : base(handler, parameters, fsm)
         {
         }
 

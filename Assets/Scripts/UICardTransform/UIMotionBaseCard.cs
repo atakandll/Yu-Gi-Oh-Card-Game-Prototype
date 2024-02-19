@@ -60,8 +60,8 @@ namespace UICardTransform
             
             if(delay ==0)
                 IsOperating = true;
-            //else
-                //Handler operation
+            else
+                Handler.MonoBehaviour.StartCoroutine(AllowMotion(delay));
             
         }
         
