@@ -12,7 +12,7 @@ namespace UICardHand
 
         private void Awake()
         {
-            CardHand = GetComponent<UICardHand>();
+            CardHand = GetComponent<UiCardHand>();
             CardRenderer = cardPrefab.GetComponent<SpriteRenderer>();
             CardHand.OnPileChanged += Bend;
         }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace UICardPile
 {
-    public abstract class UICardPile : MonoBehaviour, IUICardPile
+    public abstract class UiCardPile : MonoBehaviour, IUICardPile
     {
         #region Properties
 
