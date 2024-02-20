@@ -16,12 +16,7 @@ namespace UICardHand
 
         #endregion
 
-
-        public void UnselectCard(IUICard card)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         Action<IUICard> IUICardHand.OnCardPlayed 
         { 
             get => onCardPlayed; 
@@ -69,7 +64,7 @@ namespace UICardHand
         }
         
         /// Unselect the card in the paramater
-        public void UnSelectCard(IUICard card)
+        public void UnselectCard(IUICard card)
         {
             if(card == null)
                 return;
@@ -78,21 +73,21 @@ namespace UICardHand
             NotifyPileChange();
             EnableCards();
         }
-        /// Unselect the card which is currentlSelectedç Nothing happens if current is null.
+        /// Unselect the card which is currently selected. Nothing happens if current is null.
         public void UnSelect()
         {
-            UnSelectCard(SelectedCard);
+            UnselectCard(SelectedCard);
         }
         
         
-        /// Disable input fot all cards
+        /// Disable input for all cards
         public void DisableCards()
         {
             foreach (var card in Cards)
                 card.Disable();
         }
         
-        ///     Enables input for all cards.
+        /// Enables input for all cards.
         public void EnableCards()
         {
             foreach (var otherCard in Cards)
