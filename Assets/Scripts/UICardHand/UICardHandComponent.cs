@@ -1,8 +1,11 @@
 ﻿using Data;
 using Extensions;
 using Tools.Input;
+using UICardStateMachine;
+using UICardStateMachine.States;
 using UICardTransform;
 using UnityEngine;
+using UnityEngine.XR;
 
 namespace UICardHand
 {
@@ -36,7 +39,7 @@ namespace UICardHand
         public string Name => gameObject.name;
         public UICardParameters CardConfigParameters => cardConfigParameters;
         [SerializeField] public UICardParameters cardConfigParameters;
-        // private UICardHandFSM FSM {get; set;}
+        private UICardHandFsm Fsm {get; set;}
         
         private Transform MyTransform { get; set; }
         private Collider MyCollider { get; set; }
@@ -47,9 +50,9 @@ namespace UICardHand
         //private IUiCardHand Hand { get; set; }
         public MonoBehaviour MonoBehavior => this;
         public Camera MainCamera => Camera.main;
-        //public bool IsDragging => Fsm.IsCurrent<UiCardDrag>();
-        //public bool IsHovering => Fsm.IsCurrent<UiCardHover>();
-        //public bool IsDisabled => Fsm.IsCurrent<UiCardDisable>();
+        public bool IsDragging => Fsm.IsCurrent<UICardDragState>();
+        public bool IsHovering => Fsm.IsCurrent<UICardHoverState>();
+        public bool IsDisabled => Fsm.IsCurrent<UICardDisableState>();
         public bool IsPlayer => transform.CloserEdge(MainCamera, Screen.width, Screen.height) == 1;
 
         #endregion
@@ -79,17 +82,17 @@ namespace UICardHand
 
         public void Hover()
         {
-            //Fsm.Hover();
+            Fsm.Hover();
         }
 
         public void Disable()
         {
-            //Fsm.Disable();
+            Fsm.Disable();
         }
 
         public void Enable()
         {
-            //Fsm.Enable();
+            Fsm.Enable();
         }
         public void Select()
         {
@@ -98,22 +101,22 @@ namespace UICardHand
                 return;
 
             //Hand.SelectCard(this);
-            //Fsm.Select();
+            Fsm.Select();
         }
 
         public void Unselect()
         { 
-            //Fsm.Unselect();
+            Fsm.UnSelect();
         }
 
         public void Draw()
         {
-            //Fsm.Draw();
+            Fsm.Draw();
         }
 
         public void Discard()
         {
-            //Fsm.Discard();
+            Fsm.Discard();
         }
         
         #endregion
@@ -127,7 +130,7 @@ namespace UICardHand
             MyCollider = GetComponent<Collider>();
             MyRigidbody = GetComponent<Rigidbody>();
             MyInput = GetComponent<IMouseInput>();
-            //Hand = transform.parent.GetComponentInChildren<IUiCardHand>();
+            //Hand = Transform.parent.GetComponentInChildren<IUiCardHand>();
             MyRenderers = GetComponentsInChildren<SpriteRenderer>();
             MyRenderer = GetComponent<SpriteRenderer>();
 
@@ -136,11 +139,11 @@ namespace UICardHand
             Movement = new UIMotionMovementCard(this);
             Rotation = new UIMotionRotationCard(this);
             
-            //Fsm = new UiCardHandFsm(MainCamera, CardConfigsParameters, this);
+            Fsm = new UICardHandFsm(MainCamera, CardConfigParameters, this);
         }
         private void Update()
         {
-            //Fsm?.Update();
+            Fsm?.Update();
             Movement?.Update();
             Rotation?.Update();
             Scale?.Update();
