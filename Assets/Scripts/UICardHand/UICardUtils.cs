@@ -27,7 +27,7 @@ namespace UICardHand
 
         private void Awake()
         {
-            CardHand = transform.parent.GetComponentInChildren<UICardHand>();
+            CardHand = transform.parent.GetComponentInChildren<UiCardHand>();
         }
 
         private IEnumerator Start()
@@ -47,7 +47,7 @@ namespace UICardHand
             var cardGo = Instantiate(cardPrefab, gameView);
             cardGo.name = "Card" + Count;
             var card = cardGo.GetComponent<IUICard>();
-            card.Transform.position = deckPosition.position;
+            card.transform.position = deckPosition.position;
             Count++;
             CardHand.AddCard(card);
         }

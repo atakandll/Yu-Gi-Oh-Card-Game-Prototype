@@ -29,7 +29,7 @@ namespace UICardPile
                 throw new ArgumentNullException("Null is not a valid card");
             
             Cards.Add(card);
-            card.Transform.SetParent(transform);
+            card.transform.SetParent(transform);
 
             NotifyPileChange();
             card.Draw();
@@ -51,7 +51,7 @@ namespace UICardPile
         {
             var childCards = GetComponentsInChildren<IUICard>();
             foreach (var uiCardHand in childCards)
-                Destroy(uiCardHand.GameObject);
+                Destroy(uiCardHand.gameObject);
             
             Cards.Clear(); // removes all the element
             

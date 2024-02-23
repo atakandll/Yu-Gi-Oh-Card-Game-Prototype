@@ -21,7 +21,15 @@ namespace UICardHand
         Collider IUICardComponents.Collider => MyCollider;
         Rigidbody IUICardComponents.Rigidbody => MyRigidbody;
         IMouseInput IUICardComponents.Input => MyInput;
-        //IUICardHand IUCardComponents.Hand => Hand;
+        IUICardHand IUICardComponents.Hand => Hand;
+        public MonoBehaviour MonoBehaviour => this;
+        public UICardParameters CardConfigsParameters => cardConfigParameters;
+        public Camera MainCamera => Camera.main;
+        public bool IsDragging => Fsm.IsCurrent<UICardDragState>();
+        public bool IsHovering => Fsm.IsCurrent<UICardHoverState>();
+        public bool IsDisabled => Fsm.IsCurrent<UICardDisableState>();
+        public bool IsPlayer => transform.CloserEdge(MainCamera, Screen.width, Screen.height) == 1;
+
 
         #endregion
         
@@ -37,7 +45,6 @@ namespace UICardHand
         #region Properties
 
         public string Name => gameObject.name;
-        public UICardParameters CardConfigParameters => cardConfigParameters;
         [SerializeField] public UICardParameters cardConfigParameters;
         private UICardHandFsm Fsm {get; set;}
         
@@ -47,13 +54,9 @@ namespace UICardHand
         private SpriteRenderer MyRenderer { get; set; }
         private Rigidbody MyRigidbody { get; set; }
         private IMouseInput MyInput { get; set; }
-        //private IUiCardHand Hand { get; set; }
-        public MonoBehaviour MonoBehavior => this;
-        public Camera MainCamera => Camera.main;
-        public bool IsDragging => Fsm.IsCurrent<UICardDragState>();
-        public bool IsHovering => Fsm.IsCurrent<UICardHoverState>();
-        public bool IsDisabled => Fsm.IsCurrent<UICardDisableState>();
-        public bool IsPlayer => transform.CloserEdge(MainCamera, Screen.width, Screen.height) == 1;
+        private IUICardHand Hand { get; set; }
+        
+       
 
         #endregion
 
@@ -100,7 +103,7 @@ namespace UICardHand
             if (!IsPlayer)
                 return;
 
-            //Hand.SelectCard(this);
+            Hand.SelectCard(this);
             Fsm.Select();
         }
 
@@ -130,7 +133,7 @@ namespace UICardHand
             MyCollider = GetComponent<Collider>();
             MyRigidbody = GetComponent<Rigidbody>();
             MyInput = GetComponent<IMouseInput>();
-            //Hand = Transform.parent.GetComponentInChildren<IUiCardHand>();
+            Hand = transform.parent.GetComponentInChildren<IUICardHand>();
             MyRenderers = GetComponentsInChildren<SpriteRenderer>();
             MyRenderer = GetComponent<SpriteRenderer>();
 
@@ -139,7 +142,7 @@ namespace UICardHand
             Movement = new UIMotionMovementCard(this);
             Rotation = new UIMotionRotationCard(this);
             
-            Fsm = new UICardHandFsm(MainCamera, CardConfigParameters, this);
+            Fsm = new UICardHandFsm(MainCamera, CardConfigsParameters, this);
         }
         private void Update()
         {

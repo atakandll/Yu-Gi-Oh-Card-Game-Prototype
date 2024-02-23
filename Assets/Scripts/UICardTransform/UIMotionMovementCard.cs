@@ -21,24 +21,24 @@ namespace UICardTransform
             WithZ = false;
             IsOperating = false;
             var target = Target;
-            target.z = Handler.Transform.position.z;
-            Handler.Transform.position = target;
+            target.z = Handler.transform.position.z;
+            Handler.transform.position = target;
             base.OnMotionEnds();
         }
 
         protected override void KeepMotion()
         {
-            var current = Handler.Transform.position;
+            var current = Handler.transform.position;
             var amount = Speed * Time.deltaTime;
             var delta = Vector3.Lerp(current, Target, amount);
             if(!WithZ)
-                delta.z = Handler.Transform.position.z; // same z position with the current's z position
+                delta.z = Handler.transform.position.z; // same z position with the current's z position
             
-            Handler.Transform.position = delta;
+            Handler.transform.position = delta;
         }
         protected override bool CheckFinalState()
         {
-            var distance = Target - Handler.Transform.position;
+            var distance = Target - Handler.transform.position;
            if(!WithZ)
                distance.z = 0;
            return distance.magnitude <= Threshold;

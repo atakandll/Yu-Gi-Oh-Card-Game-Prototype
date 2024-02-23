@@ -11,7 +11,7 @@ namespace UICardTransform
         }
         protected override void OnMotionEnds()
         {
-            Handler.Transform.localScale = Target;
+            Handler.transform.localScale = Target;
             IsOperating = false;
             
 
@@ -19,15 +19,15 @@ namespace UICardTransform
 
         protected override bool CheckFinalState()
         {
-            var delta = Target - Handler.Transform.localScale;
+            var delta = Target - Handler.transform.localScale;
             return delta.magnitude <= Threshold;
         }
 
         protected override void KeepMotion()
         {
-            var current = Handler.Transform.localScale;
+            var current = Handler.transform.localScale;
             var amount = Speed * Time.deltaTime;
-            Handler.Transform.localScale = Vector3.Lerp(current, Target, amount);
+            Handler.transform.localScale = Vector3.Lerp(current, Target, amount);
         }
     }
 }

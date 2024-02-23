@@ -81,10 +81,10 @@ namespace UICardStateMachine.States
             var halfCardHeight = new Vector3(0, Handler.MyRenderer.bounds.size.y / 2);
             var bottomEdge = Handler.MainCamera.ScreenToWorldPoint(Vector3.zero);
             var topEdge = Handler.MainCamera.ScreenToWorldPoint(new Vector3(0, Screen.height));
-            var edgeFactor = Handler.Transform.CloserEdge(camera, Screen.width, Screen.height);
+            var edgeFactor = Handler.transform.CloserEdge(camera, Screen.width, Screen.height);
             var myEdge = edgeFactor == 1 ? bottomEdge : topEdge;
             var edgeY = new Vector3(0, myEdge.y);
-            var currentPosWithoutY = new Vector3(Handler.Transform.position.x, 0, Handler.Transform.position.z);
+            var currentPosWithoutY = new Vector3(Handler.transform.position.x, 0, Handler.transform.position.z);
             var hoverHeightParameter = new Vector3(0, Parameters.HoverHeight);
             var final = currentPosWithoutY + edgeY + (halfCardHeight + hoverHeightParameter) * edgeFactor;
             Handler.MoveTo(final, Parameters.HoverSpeed);
@@ -92,16 +92,16 @@ namespace UICardStateMachine.States
 
         private void SetScale()
         {
-            var currentScale = Handler.Transform.localScale;
+            var currentScale = Handler.transform.localScale;
             var finalScale = currentScale * Parameters.HoverScale;
             Handler.ScaleTo(finalScale, Parameters.ScaleSpeed);
         }
 
         private void CachePreviousValues()
         {
-            StartPosition = Handler.Transform.position;
-            StartEuler = Handler.Transform.eulerAngles;
-            StartScale = Handler.Transform.localScale;
+            StartPosition = Handler.transform.position;
+            StartEuler = Handler.transform.eulerAngles;
+            StartScale = Handler.transform.localScale;
         }
 
         private void UnsubscribeInput()

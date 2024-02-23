@@ -34,10 +34,10 @@ namespace UICardStateMachine.States
 
         private void CachePreviousScale()
         {
-            var localScale = Handler.Transform.localScale;
+            var localScale = Handler.transform.localScale;
             startScale = localScale;
             localScale *= Parameters.StartSizeWhenDraw;
-            Handler.Transform.localScale = localScale;
+            Handler.transform.localScale = localScale;
         }
 
         private void SetScale()

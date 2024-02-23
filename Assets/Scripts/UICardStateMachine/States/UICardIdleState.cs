@@ -12,7 +12,7 @@ namespace UICardStateMachine.States
         private Vector3 DefaultSize { get; }
         public UICardIdleState(IUICard handler, UICardParameters parameters, BaseStateMachine fsm) : base(handler, parameters, fsm)
         {
-            DefaultSize = Handler.Transform.localScale;
+            DefaultSize = Handler.transform.localScale;
         }
 
         public override void OnEnterState()

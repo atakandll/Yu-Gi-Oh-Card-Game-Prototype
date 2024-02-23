@@ -24,7 +24,7 @@ namespace UICardStateMachine.States
 
         private void SetScale()
         {
-            var finalScale = Handler.Transform.localScale * Parameters.DiscardedSize;
+            var finalScale = Handler.transform.localScale * Parameters.DiscardedSize;
             Handler.ScaleTo(finalScale,Parameters.ScaleSpeed);
         }
 

@@ -11,7 +11,7 @@ namespace UICardHand
 
         private void Awake()
         {
-            CardHand = GetComponent<UICardHand>();
+            CardHand = GetComponent<UiCardHand>();
             CardHand.OnPileChanged += Sort;
         }
 
@@ -24,9 +24,9 @@ namespace UICardHand
             
             foreach (var card in cards)
             {
-                var localCardPosition = card.Transform.localPosition;
+                var localCardPosition = card.transform.localPosition;
                 localCardPosition.z = layerZ;
-                card.Transform.localPosition = localCardPosition;
+                card.transform.localPosition = localCardPosition;
                 layerZ += offSetZ;
                 
             }

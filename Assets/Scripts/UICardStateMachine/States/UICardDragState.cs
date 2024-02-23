@@ -1,4 +1,5 @@
 ﻿using Data;
+using Extensions;
 using Patterns.StateMachine;
 using UICardHand;
 using UnityEngine;
@@ -23,8 +24,8 @@ namespace UICardStateMachine.States
 
         private void FollowCursor()
         {
-            var myZ = Handler.Transform.position.z;
-            Handler.Transform.position = WorldPoint().WithZ(myZ);
+            var myZ = Handler.transform.position.z;
+            Handler.transform.position = WorldPoint().WithZ(myZ);
         }
 
         public override void OnUpdate()
@@ -38,7 +39,7 @@ namespace UICardStateMachine.States
             Handler.Movement.StopMotion();
             
             //cache old values
-            StartEuler = Handler.Transform.eulerAngles;
+            StartEuler = Handler.transform.eulerAngles;
             
             Handler.RotateTo(Vector3.zero, Parameters.RotationSpeed);
             MakeRenderFirst();
@@ -48,7 +49,7 @@ namespace UICardStateMachine.States
         public override void OnExitState()
         {
             //reset position and rotation
-            if (Handler.Transform)
+            if (Handler.transform)
             {
                 Handler.RotateTo(StartEuler,Parameters.RotationSpeed);
                 MakeRendererNormal();
