@@ -48,6 +48,7 @@ namespace UICardStateMachine.States
 
         private void OnPointerDown(PointerEventData obj)
         {
+            Debug.Log("Hover");
             if(Fsm.IsCurrent(this))
                 Handler.Select(); // PushState<UiCardDrag>();
         }

@@ -22,6 +22,7 @@ namespace UICardPile.UICardGraveyard
         private void PlayRandom(PointerEventData obj)
         {
             Utils.PlayCard();
+            Debug.Log("Discard Card");
         }
     }
 }

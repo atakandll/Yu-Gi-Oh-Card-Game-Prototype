@@ -50,7 +50,9 @@ namespace Tools.Input
         Left,
         Right
     }
-
+    
+    // Wrap of all the Unity Input System into a Monobehavior.
+    [RequireComponent(typeof(Collider))]
     public class UiMouseInputProvider : MonoBehaviour, IMouseInput
     {
         #region Properties and Fields
@@ -114,6 +116,7 @@ namespace Tools.Input
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
+            Debug.Log("OnPointerClick");
             ((IMouseInput)this).OnPointerClick.Invoke(eventData);
         }
 

@@ -20,6 +20,7 @@ namespace UICardHand
         private void DrawCard(PointerEventData obj)
         {
             CardDrawer.DrawCard();
+            Debug.Log("Draw Card");
         }
     }
 }

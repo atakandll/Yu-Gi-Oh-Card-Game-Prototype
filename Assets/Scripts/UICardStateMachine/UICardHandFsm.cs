@@ -25,12 +25,12 @@ namespace UICardStateMachine
             base(handler)
         {
             CardConfigParameters = cardConfigParameters;
-            IdleState = new UICardIdleState(handler, cardConfigParameters, this);
-            DrawState = new UICardDrawState(handler, cardConfigParameters, this);
-            DisableState = new UICardDisableState(handler, cardConfigParameters, this);
-            HoverState = new UICardHoverState(handler, cardConfigParameters, this);
-            DragState = new UICardDragState(handler, camera, cardConfigParameters, this);
-            DiscardState = new UICardDiscardState(handler, cardConfigParameters, this);
+            IdleState = new UICardIdleState(handler, CardConfigParameters, this);
+            DrawState = new UICardDrawState(handler, CardConfigParameters, this);
+            DisableState = new UICardDisableState(handler, CardConfigParameters, this);
+            HoverState = new UICardHoverState(handler, CardConfigParameters, this);
+            DragState = new UICardDragState(handler, camera, CardConfigParameters, this);
+            DiscardState = new UICardDiscardState(handler, CardConfigParameters, this);
             
             RegisterState(IdleState);
             RegisterState(DrawState);
