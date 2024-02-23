@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: UICardParameters
   m_EditorClassIdentifier: 
   disabledAlpha: 0.5
-  hoverHeight: 5
+  hoverHeight: 3
   hoverRotation: 0
-  hoverScale: 5
-  hoverSpeed: 15
+  hoverScale: 2
+  hoverSpeed: 10
   height: 0.19
   bentAngle: 27.7
-  spacing: -4.24
-  rotationSpeed: 20
-  rotationSpeedP2: 500
+  spacing: -2
+  rotationSpeed: 38.5
+  rotationSpeedP2: 962
   movementSpeed: 4
   scaleSpeed: 8
   startSizeWhenDraw: 0.05
