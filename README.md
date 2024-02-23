@@ -2,6 +2,8 @@
 
 Welcome to the Yu-Gi-Oh!-inspired card game interface repository! This project provides a user interface for a card game, offering a set of features and customizable parameters to enhance the gaming experience.
 
+Watch the `gameplay` of the project: https://youtu.be/VBYvdrHfaY8
+
 ## Features
 
 `Card Actions:`
